@@ -1,0 +1,228 @@
+._size .bed-image.active {
+    background-color: #ffffff;
+}
+
+.day.active,
+._month .f.active {
+    background-color: #ffffff;
+}
+
+.day {
+    cursor: pointer;
+}
+
+.woocommerce div.product div.summary {
+    float: unset;
+    width: 100%;
+    margin-bottom: 0 !important;
+}
+
+.woocommerce div.product form.cart {
+    margin-bottom: 0 !important;
+}
+
+.woocommerce div.product span.price {
+    color: #b4b1a7;
+    font-size: 1em;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+/*.add-attr_res,*/
+/*.woocommerce-variation-add-to-cart,*/
+/*.variations,*/
+/*.product_meta,*/
+/*.first-payment-date,*/
+/*p.price,*/
+/*.product_title,*/
+/*.woocommerce-product-gallery */
+/*{*/
+/*    display: none;*/
+/*}*/
+
+.wpcf7 form .wpcf7-response-output {
+
+    margin-top: 10px;
+
+    padding: 10px;
+
+    margin-left: 0;
+
+    margin-right: 0;
+
+    background-color: #ffdede;
+
+    border: 0;
+
+}
+
+
+body div .image-5 {
+    max-width: 150px;
+}
+
+body div .parachute-float {
+    max-width: 50%;
+}
+
+.woocommerce-checkout,
+.account-page {
+    margin-right: 50px;
+}
+
+#order_review_heading,
+.woocommerce-checkout-review-order,
+.woocommerce .col2-set {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+body .woocommerce form input {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
+
+body .account-section {
+    height: auto;
+}
+
+.woocommerce form.register,
+.woocommerce form.login {
+    border: 0;
+}
+
+.woocommerce button.button {
+    background-color: #b4b1a7;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 9px 15px;
+    color: white;
+    border: 0;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+
+.wpcf7 form.sent .wpcf7-response-output {
+
+    text-align: center;
+
+    background-color: #dddddd;
+
+}
+
+
+.wpcf7-form-control-wrap {
+    width: 100%;
+}
+
+div.wpcf7 .ajax-loader {
+
+    background: url(../spinner.gif) no-repeat;
+
+    background-size: contain;
+
+    width: 16px;
+
+    height: 16px;
+
+
+}
+
+.wpcf7-form.sent .wpcf7-submit,
+.wpcf7-form.sent .ajax-loader,
+.wpcf7-form.sent .lb-box,
+.wpcf7-form.sent .textar-b,
+.wpcf7-not-valid-tip {
+
+    display: none !important;
+
+}
+
+.wpcf7-not-valid {
+
+    background: #fdcfcf !important;
+
+}
+
+div.wpcf7-mail-sent-ok {
+
+    border: 0;
+
+    padding: 0;
+
+    font-size: 24px;
+
+    text-align: center;
+
+    font-family: american captain, sans-serif;
+
+    color: #698a6d;
+
+}
+
+.wpcf7-response-output {
+
+    clear: both;
+
+}
+
+
+.toggles .toggle_wrap.current_toggle > .toggle {
+
+    display: block;
+
+}
+
+
+.toggles .toggle {
+
+    display: none;
+
+}
+
+
+.faq-plus-wrap {
+
+    transform: rotate(-360deg);
+
+    transition: all .3s;
+
+}
+
+
+.current_toggle .faq-plus-l {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+.current_toggle .faq-plus-wrap {
+
+    transform: rotate(0);
+
+}

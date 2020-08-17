@@ -1,0 +1,206 @@
+.nudle-right {
+    position: static;
+    top: 0px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 60%;
+    height: 100%;
+    /*min-height: 100vh;*/
+    padding: 0 5vw 2vw;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    background-color: #f0eeeb;
+}
+.bed-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-top: 1px none #b4b1a7;
+}
+
+.bed-row.add {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #b4b1a7;
+    border-top-style: solid;
+}
+
+.bed-row.cal {
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+.bed-type {
+    width: auto;
+    height: auto;
+    margin: 10px;
+}
+
+.bed-image {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d0cbc3;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.bed-image:hover {
+    background-color: #fbfbfa;
+}
+
+.bed-image:active {
+    border-width: 2px;
+    border-color: #5b5b5f;
+}
+
+.bed-image.f {
+    width: auto;
+    min-width: 80px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.text-block-2 {
+    font-family: Montserrat, sans-serif;
+    color: #5b5b5f;
+    text-align: center;
+}
+
+.text-block-2.green {
+    color: #b4b1a7;
+}
+
+.image-3 {
+    width: 250px;
+    max-width: 102%;
+}
+
+.text-block-3 {
+    font-family: Montserrat, sans-serif;
+    color: #5b5b5f;
+    text-align: center;
+}
+
+.date {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 13px;
+}
+
+.day {
+    min-width: 100px;
+    margin-right: 20px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b4b1a7;
+    border-radius: 6px;
+}
+.but {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: Butler, sans-serif;
+    color: #5b5b5f;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+.h3 {
+    font-family: Butler, sans-serif;
+    color: #5b5b5f;
+    font-size: 2em;
+    line-height: 1em;
+    font-weight: 400;
+}
+.h3.up {
+    position: relative;
+    z-index: 3;
+    font-size: 2.5em;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.paragraph {
+    font-family: Montserrat, sans-serif;
+    color: #5b5b5f;
+}
+.bed-row.add {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #b4b1a7;
+    border-top-style: solid;
+    cursor: pointer;
+}
+.text-block-2.green {
+    color: #b4b1a7;
+}
+
+/* WC thumb fix */
+.single-product div.product .woocommerce-product-gallery img {
+    margin: 0;
+    width: 100%;
+}
+
+
+.button {
+    background-color: #b4b1a7;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.w-button {
+    display: inline-block;
+    padding: 9px 15px;
+    background-color: #3898EC;
+    color: white;
+    border: 0;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 0;
+}
