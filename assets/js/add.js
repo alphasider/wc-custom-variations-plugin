@@ -101,7 +101,7 @@ jQuery(function ($) {
 
   // Add to cart button
   $('.add-prods-to-cart').click(function (e) {
-    console.log('add to cart');
+    // console.log('add to cart');
 
     let sizes = [];
     let delivery = $('.date .active > div').attr('data-atr');
@@ -120,7 +120,7 @@ jQuery(function ($) {
 
 
     if (is_valid) {
-      console.log('Valid');
+      // console.log('Valid');
       let ajax_obj = {
         action: 'parachute_action',
         pa_size: sizes.join('%%'),
@@ -128,7 +128,7 @@ jQuery(function ($) {
         pa_month: month,
         prod_id: id,
       };
-      console.log(ajax_obj);
+      // console.log(ajax_obj);
 
       $.post(parachute_obj.ajax_url, ajax_obj).done(function (response) {
         // let data = JSON.parse(response);
