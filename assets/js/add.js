@@ -102,6 +102,7 @@ jQuery(function ($) {
   // Add to cart button
   $('.add-prods-to-cart').click(function (e) {
     console.log('add to cart');
+
     let sizes = [];
     let delivery = $('.date .active > div').attr('data-atr');
     let month = $('._month .active .but').attr('data-atr');
@@ -121,25 +122,26 @@ jQuery(function ($) {
     if (is_valid) {
       console.log('Valid');
       let ajax_obj = {
-        action: 'filter_post',
+        action: 'parachute_action',
         pa_size: sizes.join('%%'),
         pa_delivery: delivery,
         pa_month: month,
-        prod_id: id
+        prod_id: id,
       };
       console.log(ajax_obj);
 
-      $.post(global_obj.ajaxurl, ajax_obj).done(function (response) {
-        let data = JSON.parse(response);
-        console.log(data);
-        if (data.result === 1) {
+      $.post(parachute_obj.ajax_url, ajax_obj).done(function (response) {
+        // let data = JSON.parse(response);
+        // console.log(data);
+        console.info(response)
+        /*if (data.result === 1) {
           console.log('Ajax success');
           // alert('Products added to basket');
-          window.location.href = "http://parachute.1devserver.co.uk/cart";
+          window.location.href = "http://parachute/cart";
         } else {
           console.log('Ajax fail');
           alert('Sorry, this product is unavailable. Please choose a different combination.');
-        }
+        }*/
       });
     } else {
       alert('Please, choose all product attributes');
