@@ -206,9 +206,10 @@
     $variation_id = parachute_get_selected_variation_id($product_variations, $selected_variations); // Selected variation ID
     $quantity = parachute_get_total_quantity($selected_variations);
 
-    // Add to cart the product if it exists
-    if (!$variation_id == 0) {
-      WC()->cart->add_to_cart($product_id, $quantity, $variation_id);
+    try {
+      parachute_add_to_cart($product_id, $variation_id, $selected_variations);
+    } catch (Exception $e) {
+      print_r('Error in parachute_add_to_cart_function: ' . $e);
     }
 
 //    echo '
@@ -239,8 +240,35 @@
    * @return int|mixed
    */
 
+  /**
+   * Add to cart single/multiple product if they exists
+   * @param int $product_id
+   * @param array $variation_id
+   * @param array $variation_args
+   * @throws Exception
+   */
+  function parachute_add_to_cart($product_id, array $variation_id = [], array $variation_args = []) {
+    foreach ($variation_id as $current_index => $id) {
+      echo '
+      ADD TO CART FUNCTION >>> ';
+      echo '
+      Variation ID: >>> ';
+      print_r($variation_id);
+      echo '
+      Variation arguments: >>> ';
+      print_r($variation_args);
+      if (!$id == 0) {
+        WC()->cart->add_to_cart($product_id[$current_index], 1, $id, $variation_args[$current_index]);
+      }
+    }
+  }
 
-  // Create a brand new array of attributes for each of sizes
+  /**
+   * Create a brand new array of attributes for each of sizes
+   * @param $bed_sizes
+   * @param $response_data
+   * @return array
+   */
   function parachute_generate_selected_variations_attributes($bed_sizes, $response_data) {
     $all_variations = [];
     foreach ($bed_sizes as $bed_size) {
@@ -265,22 +293,28 @@
    * }
    * */
 
+  /**
+   * Get selected variation ID if there is one
+   * @param array $product_variations
+   * @param array $all_variations
+   * @return array
+   */
   function parachute_get_selected_variation_id(array $product_variations, array $all_variations) {
-    echo '
-    Response data in function: ';
-    print_r($all_variations);
-    foreach ($all_variations as $current_variation) { // Loop through all the selected variations
-      foreach ($product_variations as $variation) { // Loop through all the possible variations
+    $variations_array = [];
+    foreach ($all_variations as $current_variation) { // Loop through all selected variations
+      foreach ($product_variations as $variation) { // Loop through all possible variations
         $matched_variation = array_diff($variation['attributes'], $current_variation);
         if (empty($matched_variation)) {
-          return $variation['variation_id'];
+          $variations_array[] = $variation['variation_id'];
         }
       }
     }
-    return 0;
+    return $variations_array;
   }
 
-  // Get requested data
+  /**
+   * Get requested data
+   */
   function parachute_get_requested_data() {
     $bed_size = strtolower($_POST['pa_size']);
     $frequency = strtolower($_POST['pa_month']);
@@ -294,7 +328,11 @@
     return $response_data;
   }
 
-  // Get product variations by product ID
+  /**
+   * Get product variations by product ID
+   * @param int $product_id
+   * @return array
+   */
   function parachute_get_product_variations(int $product_id) {
     $product = wc_get_product($product_id);
     return $product->get_available_variations();
