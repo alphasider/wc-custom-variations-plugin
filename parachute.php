@@ -22,6 +22,7 @@
 
   add_action('wp_enqueue_scripts', 'load_scripts');
 
+
   /**
    * Main functionality
    * Source: WooCommerce core (woocommerce/include/wc-template-functions.php)
@@ -35,6 +36,7 @@
      * @since 2.4.0
      */
     function parachute_variation_attributes($args = array()) {
+
       $args = wp_parse_args(
         apply_filters('woocommerce_dropdown_variation_attribute_options_args', $args),
         array(
@@ -104,8 +106,6 @@
             $html .= '<div data-qty="1" class="bed-row add">';
             $html .= '  <div class="text-block-2 green">+ Add another bed</div>';
             $html .= '</div>';
-
-//            echo apply_filters('woocommerce_dropdown_variation_attribute_options_html', $html, $args); // WPCS: XSS ok.
           }
 
           // Parachute frequency
@@ -124,8 +124,6 @@
               $html .= '  </div>';
             }
             $html .= '</div>';
-
-//            echo apply_filters('woocommerce_dropdown_variation_attribute_options_html', $html, $args); // WPCS: XSS ok.
           }
 
           // Delivery
@@ -141,7 +139,6 @@
               $html .= '  </div>';
             }
             $html .= '</div>';
-//            echo apply_filters('woocommerce_dropdown_variation_attribute_options_html', $html, $args); // WPCS: XSS ok.
           }
 
         }
@@ -177,35 +174,14 @@
     $product_id = intval($_POST['prod_id']);
     $response_data = parachute_get_requested_data(); // Requested data
     $product_variations = parachute_get_product_variations($product_id); // Get available variations by product ID
-
-    // Extract all the sizes if there is more than one
-    $all_bed_sizes = explode('%%', $response_data['bed_size']);
     $selected_variations = parachute_generate_selected_variations_attributes($response_data);
-
     $variation_id = parachute_get_selected_variation_id($product_variations, $selected_variations); // Selected variation ID
-//    $quantity = parachute_get_total_quantity($selected_variations);
 
     try {
       parachute_add_to_cart($product_id, $variation_id, $selected_variations);
     } catch (Exception $e) {
-      print_r('Error in parachute_add_to_cart_function: ' . $e);
+      echo ('Error in parachute_add_to_cart_function: ' . $e);
     }
-
-//    echo '
-//    Equality test: >>> ';
-//    print_r($quantity);
-
-    echo '
-    Variation ID: >>> ';
-    print_r($variation_id);
-
-    echo '
-    Selected variations: >>> ';
-    print_r($selected_variations);
-
-    echo '
-    Response data: >>> ';
-    print_r($response_data);
 
     wp_die();
   }
@@ -231,11 +207,10 @@
 
   /**
    * Create a brand new array of attributes for each of sizes
-   * @param $bed_sizes
-   * @param $response_data
+   * @param array $response_data
    * @return array
    */
-  function parachute_generate_selected_variations_attributes($response_data) {
+  function parachute_generate_selected_variations_attributes(array $response_data =[]) {
 
     $all_variations = [];
     $formatted_array = parachute_replace_symbols_with_dash($response_data);
@@ -250,7 +225,7 @@
   }
 
   /**
-   * Get selected variation ID if there is one
+   * Get selected variation ID if there is one or more
    * @param array $product_variations
    * @param array $all_variations
    * @return array
@@ -260,25 +235,8 @@
     foreach ($all_variations as $current_variation) { // Loop through all selected variations
       foreach ($product_variations as $variation) { // Loop through all possible variations
         $matched_variation = array_diff($variation['attributes'], $current_variation);
-
-        echo '
-        Variation attrs: 
-        ';
-        print_r($variation['attributes']);
-
-        echo '
-        Current Variation: 
-        ';
-        print_r($current_variation);
-
-        echo '----------------------';
         if (empty($matched_variation)) {
-
           $variations_array[] = $variation['variation_id'];
-          echo '
-        Matched variation: >>>
-        ';
-          print_r($variation['variation_id']);
         }
       }
     }
@@ -308,7 +266,6 @@
    */
   function parachute_get_product_variations(int $product_id) {
     $product = wc_get_product($product_id);
-//    print_r($product->get_available_variations());
     return $product->get_available_variations();
   }
 
@@ -329,4 +286,20 @@
     ';
     print_r($cleaned_data);
     return $cleaned_data;
+  }
+
+  add_shortcode('add_to_cart_btn', 'parachute_add_to_cart_shortcode');
+
+  /**
+   * Add to cart btn shortcode
+   * @param $atts
+   * @return string
+   */
+  function parachute_add_to_cart_shortcode($atts) {
+    $attribute = shortcode_atts([
+      'label' => 'Add to cart',
+      'product_id' => 0
+    ], $atts);
+
+    return '<a href="#" class="add-prods-to-cart button w-button" data-prod-id="' . $attribute['product_id'] . '">' . $attribute['label'] . '</a>';
   }
