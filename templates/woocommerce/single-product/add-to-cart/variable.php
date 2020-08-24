@@ -23,12 +23,9 @@
   $variations_json = wp_json_encode($available_variations);
   $variations_attr = function_exists('wc_esc_json') ? wc_esc_json($variations_json) : _wp_specialchars($variations_json, ENT_QUOTES, 'UTF-8', true);
 
-
   do_action('woocommerce_before_add_to_cart_form'); ?>
 
-
 <?php
-
   foreach ($attributes as $attribute_name => $options) {
     parachute_variation_attributes([
       'options' => $options,
@@ -36,11 +33,9 @@
       'product' => $product,
     ]);
   }
-
 ?>
 
-<?php echo do_shortcode('[add_to_cart_btn label="Subscribe now" product_id=34]'); ?>
-
+<?php echo do_shortcode('[add_to_cart_btn label="Subscribe now" product_id=' . $product->get_id() .']'); ?>
 
   <form class="variations_form cart"
         action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
